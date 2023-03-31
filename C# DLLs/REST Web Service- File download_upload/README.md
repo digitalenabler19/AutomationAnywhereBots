@@ -1,10 +1,11 @@
 # RPA
-#This the DLL source code , which can be used to call file download /Upload APIs
+#This DLL source code , which can be used to call file download /Upload APIs
 
 Please find the DLL details below
 
 
 DLL Name :Rest Web Services.dll
+
 Dependant DLL : Newtonsoft.Json.dll
 
 -----------------------------------------------------------------------
@@ -17,20 +18,29 @@ class : RestWebServiceRequest
 
 function : SendRequest
 
-Input Params : 
+ Input Params : 
 
-Parameter Name	Datatype	Sample value
-domain	string	so***-av.***.sp***.com
-apiUrl	string	https://so***-av.***.sp***.com/getFile/123
+     Parameter Name	Datatype	Sample value
 
-Cookie	string	key=value;key2=value2
-Headers	string	key=value;key2=value2
-method,	string	GET
-inputData	string	{ "companyId":"IQ24143"}
-fileDownload	Boolean	true
-outputFolder	String	Local folder path
-certificatePath	String	Local file path
-privateKey	String	*******
+     - domain	string	so***-av.***.sp***.com
+
+     - apiUrl	string	https://so***-av.***.sp***.com/getFile/123
+
+     - Cookie	string	key=value;key2=value2
+
+     - Headers	string	key=value;key2=value2
+
+     - method,	string	GET
+
+     - inputData	string	{ "companyId":"IQ24143"}
+
+     - fileDownload	Boolean	true
+
+     - outputFolder	String	Local folder path
+
+     - certificatePath	String	Local file path
+
+     - privateKey	String	*******
 
 
 
