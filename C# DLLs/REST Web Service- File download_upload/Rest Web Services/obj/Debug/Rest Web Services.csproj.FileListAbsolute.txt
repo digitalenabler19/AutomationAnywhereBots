@@ -1,0 +1,6 @@
+C:\Users\Sikha.P\source\repos\Rest Web Services\bin\Debug\Rest Web Services.dll
+C:\Users\Sikha.P\source\repos\Rest Web Services\bin\Debug\Rest Web Services.pdb
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Debug\Rest Web Services.csprojAssemblyReference.cache
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Debug\Rest Web Services.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Debug\Rest Web Services.dll
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Debug\Rest Web Services.pdb

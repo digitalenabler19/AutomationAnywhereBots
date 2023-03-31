@@ -1,0 +1,75 @@
+attachment; filename=EPVNGV4SJXS741T5P8PD8QNG10_D.pdf; filename*=UTF-8''EPVNGV4SJXS741T5P8PD8QNG10_D.pdf
+
+
+
+
+
+namespace : Rest_Web_Services
+
+class : RestWebServiceRequest
+
+function : SendRequest
+
+Input params :
+
+	    string domain,
+            string apiUrl,
+            string cookie,
+            string headers,
+            string method,
+            string inputData,
+            Boolean fileDownload,
+            string outputFolder,
+            string certificatePath,
+            string privateKey
+
+sample inputs:
+
+//***cookie**//
+//key=value;key2=value2
+
+//****Headers****/
+//key=value;key2=value2
+
+//****inputData****/
+//from bot   { "companyId":"IQ24143"}
+
+-----------------------------------------------------------------------
+
+E:\SIKHA\Test
+
+Hi Ravi,
+
+We developed a DLL to overcome this limitation. You can suggest this to the team .
+Please find the DLL and its details below
+
+Please find the DLL here https://automationanywhere1-my.sharepoint.com/:f:/g/personal/sikha_p_automationanywhere_com/EpteHTkmwilCoeNHjVe8hToBhZVEgQIz6XB_x8RIvySL-g?e=mUd6nz
+
+DLL Name :Rest Web Services.dll
+Dependant DLL : Newtonsoft.Json.dll
+
+namespace : Rest_Web_Services
+
+class : RestWebServiceRequest
+
+function : SendRequest
+
+Input Params : 
+
+Parameter Name	Datatype	Sample value
+domain	string	so***-av.***.sp***.com
+apiUrl	string	https://so***-av.***.sp***.com/getFile/123
+
+Cookie	string	key=value;key2=value2
+Headers	string	key=value;key2=value2
+method,	string	GET
+inputData	string	{ "companyId":"IQ24143"}
+fileDownload	Boolean	true
+outputFolder	String	Local folder path
+certificatePath	String	Local file path
+privateKey	String	*******
+
+
+
+
+
