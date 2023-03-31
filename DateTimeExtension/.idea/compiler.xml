@@ -7,7 +7,7 @@
         <processorPath useClasspath="false">
           <entry name="$PROJECT_DIR$/libs/package-compileonly-sdk-1.0.0.jar" />
         </processorPath>
-        <module name="Downloads.DateTimeExtension.main" />
+        <module name="RPA.DateTimeExtension.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />

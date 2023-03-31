@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DateTimeExtension.main.iml" filepath="$PROJECT_DIR$/.idea/modules/DateTimeExtension.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Downloads.DateTimeExtension.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Downloads.DateTimeExtension.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RPA.DateTimeExtension.main.iml" filepath="$PROJECT_DIR$/.idea/modules/RPA.DateTimeExtension.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.automationanywhere.DateTimeExtension.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.automationanywhere.DateTimeExtension.main.iml" />
     </modules>
   </component>

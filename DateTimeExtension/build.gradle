@@ -62,7 +62,7 @@ configure(allprojects){
 	}
 
 	dependencies {
-		compileOnly name: 'package-compileonly-sdk', version: '1.0.0'
+		implementation name: 'package-compileonly-sdk', version: '1.0.0'
 		compileOnly group: "org.apache.logging.log4j", name: "log4j-api", version: "$loggerVersion"
 		implementation name: 'package-runtime-sdk', version: '1.0.0'
 		annotationProcessor name: 'package-compileonly-sdk', version: '1.0.0'
