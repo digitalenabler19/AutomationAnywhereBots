@@ -1,0 +1,9 @@
+C:\Users\Sikha.P\source\repos\Rest Web Services\bin\Release\Rest Web Services.dll
+C:\Users\Sikha.P\source\repos\Rest Web Services\bin\Release\Rest Web Services.pdb
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Release\Rest Web Services.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Release\Rest Web Services.dll
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Release\Rest Web Services.pdb
+C:\Users\Sikha.P\source\repos\Rest Web Services\bin\Release\Newtonsoft.Json.dll
+C:\Users\Sikha.P\source\repos\Rest Web Services\bin\Release\Newtonsoft.Json.xml
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Release\Rest Web Services.csproj.CopyComplete
+C:\Users\Sikha.P\source\repos\Rest Web Services\obj\Release\Rest Web Services.csproj.AssemblyReference.cache

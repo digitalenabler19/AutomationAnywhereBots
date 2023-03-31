@@ -1,0 +1,7 @@
+com.automationanywhere.commandsdk.annotations
+com.automationanywhere.commandsdk.annotations.desktopoperations
+com.automationanywhere.commandsdk.annotations.rules
+com.automationanywhere.commandsdk.annotations.rules.EntryList
+com.automationanywhere.commandsdk.annotations.rules.uiobject
+com.automationanywhere.commandsdk.annotations.sapbapi
+com.automationanywhere.commandsdk.model
