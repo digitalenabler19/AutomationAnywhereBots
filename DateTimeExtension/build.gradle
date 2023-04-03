@@ -42,9 +42,10 @@ configure(allprojects){
 	}
 
 	packageJson{
+
 		artifactName = project.name
 		group = "$groupName"
-		author = ""
+		author = "Partner Solution Desk"
 	}
 
 	jar.dependsOn commandCodeGen
@@ -69,6 +70,8 @@ configure(allprojects){
 		testImplementation "org.testng:testng:$testNgVersion"
 		testImplementation name: 'package-compileonly-sdk', version: '1.0.0'
 		implementation group: 'net.java.dev.jna', name: 'jna-platform', version: "$jnaVersion"
+		implementation files('libs/microsoft-graph-core-2.0.0.jar')
+		implementation group: 'com.google.code.gson', name: 'gson', version: "$gsonVersion"
 
 		//Remove these dependencies if not needed
 		implementation group: 'org.springframework', name: 'spring-jms', version: '5.0.2.RELEASE'
