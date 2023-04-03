@@ -10,3 +10,5 @@ It also has a jar file which can be imported to your Control Room to run it as a
 
 Please refer to the build.gradle for any libraries that are required although all the libs are provided automatically
 
+For more details refer, https://automationanywhere1-my.sharepoint.com/:w:/g/personal/syed_hasnain_automationanywhere_com/EQaamaEhTp9Ft8oc3ENkwRIBUqMpvxrQjwP8JmCBXLXqkQ
+
