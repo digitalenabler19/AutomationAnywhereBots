@@ -51,7 +51,7 @@ public class ValidatePdfFile {
      */
     @StartListen
     public void startTrigger(@Idx(index = "1", type = AttributeType.TEXT)
-                             @Pkg(label = "Provide the broker URL")
+                             @Pkg(label = "Provide the folder path")
                              @NotEmpty
                              String folderPath) {
 

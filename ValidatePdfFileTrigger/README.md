@@ -25,11 +25,33 @@ The code in this repo is for a trigger which executes a bots when a new pdf is a
 
 * You can find the jar in the same project build/libs/ folder.
 
+* Create a new bot and in the trigger section, you'll find your package there.
+
+* Drag and drop your action from the package.
+
+* Enter the folder path.
+
+* Add the validate digital signature package which you'll find in this repo
+
+* And add the pdf files to your folderpath to verify your result
+
 #### To add the built jar from this repo directly to your control room
-* Download the jar from this repo to your local.
+* Download the jar from this project to your local.
 
 * To add it to your control room, open your control room , in the manage sections click on packages and click on add package.
 
 * Select the jar that you've just downloaded , click on accept and enable.
+
+* Create a new bot and in the trigger section, you'll find your package there.
+
+* Drag and drop your action from the package.
+
+* Enter the folder path.
+
+* Add the validate digital signature package which you'll find in this repo
+
+* And add the pdf files to your folderpath to verify your result
+
+
 
 
