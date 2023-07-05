@@ -1,0 +1,45 @@
+{
+  "ui:MessageBox" : {
+    "AAcommandName" :"MessageBox",
+    "AANodeTemplate" : {
+      "commandName": "messageBox",
+      "packageName": "MessageBox",
+      "disabled": false,
+      "attributes": [
+        {
+          "name": "title",
+          "value": {
+            "type": "STRING",
+            "string": "Automation Anywhere Enterprise Client"
+          }
+        },
+        {
+          "name": "content",
+          "value": {
+            "type": "STRING",
+            "string": ""
+          }
+        },
+        {
+          "name": "scrollLines",
+          "value": {
+            "type": "NUMBER",
+            "number": "30"
+          }
+        },
+        {
+          "name": "closeMsgBox",
+          "value": {
+            "type": "BOOLEAN",
+            "boolean": false
+          }
+        }
+      ]
+    },
+    "AApackage" : {
+      "name": "MessageBox",
+      "version": "3.5.0-20221223-065722"
+    }
+  }
+
+}

@@ -1,0 +1,13 @@
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSS3Buckets.dll
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSS3Buckets.pdb
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSSDK.Core.dll
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSSDK.S3.dll
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSSDK.Core.pdb
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSSDK.Core.xml
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSSDK.S3.pdb
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\bin\Debug\AWSSDK.S3.xml
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\obj\Debug\AWSS3Buckets.csproj.AssemblyReference.cache
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\obj\Debug\AWSS3Buckets.csproj.CoreCompileInputs.cache
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\obj\Debug\AWSS3Buckets.csproj.CopyComplete
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\obj\Debug\AWSS3Buckets.dll
+C:\Users\Sikha.P\source\repos\AWSS3Buckets\obj\Debug\AWSS3Buckets.pdb
