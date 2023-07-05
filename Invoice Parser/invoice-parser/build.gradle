@@ -1,0 +1,169 @@
+
+buildscript {
+    dependencies {
+        classpath 'com.automationanywhere.pkggen:command-plugin:5.0.8'
+    }
+}
+
+plugins {
+    id 'maven-publish'
+    id 'java'
+    id 'com.automationanywhere.build.config-plugin'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+automationanywhere {
+    releaseSupport = true
+    codequality {
+        disableLinting = true
+    }
+}
+
+apply plugin: "com.automationanywhere.command-codegen"
+
+ext {
+    log4jVersion = '2.17.1'
+    pkgGenVersion = '5.2.1'
+    toolChainVersion = '1.6.1'
+    jnaVersion = '5.3.1'
+    pkgsdksVersion = '3.2.0'
+}
+
+group = 'com.automationanywhere.packages'
+
+packageJson{
+    artifactName = project.name
+    group = project.group
+    author = "Partner Solution Desk"
+}
+
+apply plugin: 'com.automationanywhere.build.config-plugin'
+
+build.dependsOn shadowJar
+jar.dependsOn commandCodeGen
+
+jar {
+    classifier = 'default'
+}
+
+shadowJar {
+    baseName =  project.name
+    classifier = null
+    zip64 = true
+}
+
+def embeddedSigned = Attribute.of('com.automationanywhere.embeddedsigned', Boolean)
+
+dependencies {
+    attributesSchema {
+        attribute(embeddedSigned)
+    }
+    compileOnly "com.automationanywhere.toolchain:bot-runtime:$toolChainVersion"
+    compileOnly "com.automationanywhere.toolchain:bot-api:$toolChainVersion"
+
+    compileOnly "com.automationanywhere.pkggen:command-annotations:$pkgGenVersion"
+    annotationProcessor "com.automationanywhere.pkggen:command-processor:$pkgGenVersion"
+    compileOnly group: 'org.apache.logging.log4j', name: 'log4j-api', version: "$log4jVersion"
+
+    implementation "com.automationanywhere.pkgsdks:i18n-api:$pkgsdksVersion"
+
+    implementation group: 'software.amazon.awssdk', name: 'textract', version: '2.15.61'
+
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.12.452'
+
+    // https://mvnrepository.com/artifact/com.bazaarvoice.jolt/jolt-core
+    implementation group: 'com.bazaarvoice.jolt', name: 'jolt-core', version: '0.1.8'
+    // https://mvnrepository.com/artifact/com.bazaarvoice.jolt/json-utils
+    implementation group: 'com.bazaarvoice.jolt', name: 'json-utils', version: '0.1.8'
+
+    implementation group: 'org.json', name: 'json', version: '20230227'
+}
+
+// task to make a copy of the jar to be signed
+
+task copyFileToSign(type:Copy) {
+    from configurations.shadowRuntimeElements.outgoing.artifacts.files
+    into "$buildDir/signed"
+}
+
+
+// task that signs the jar file copied by copyFileToSign
+
+task signEmbedded(type:Exec) {
+    doFirst {
+        if (!project.hasProperty('signingSigner')
+                || !project.hasProperty('signingSigntool')
+                || !project.hasProperty('signingSignconfig')) {
+            throw new GradleException("signingSigner, signingSigntool or signingSignconfig properties missing")
+        }
+    }
+
+    dependsOn copyFileToSign
+    group = 'build'
+    description = 'Sign embedded resources'
+    commandLine 'python'
+    args = [
+            project.findProperty("signingSigner") ?: '',
+            '--verbose',
+            '--add_signatures',
+            '--overwrite_files',
+            '--tmp_path',
+            "$buildDir\\signed-tmp",
+            '--signtool_path',
+            project.findProperty("signingSigntool") ?: '',
+            '--config',
+            project.findProperty("signingSignconfig") ?: '',
+            "$buildDir\\signed"
+    ]
+
+    // output uses a provider so that the shadowRuntimeElements artifacts are not evaluated until the configuration
+
+    // references it.
+
+    outputs.file(project.provider({
+        file("$buildDir\\signed\\${configurations.shadowRuntimeElements.outgoing.artifacts.files.singleFile.name}")
+    }))
+
+}
+
+
+configurations {
+
+    embeddedSignedRuntimeElements {
+
+        canBeConsumed = true
+        canBeResolved = false
+
+        attributes {
+            it.attribute(embeddedSigned, true)
+            it.attribute(Usage.USAGE_ATTRIBUTE, project.objects.named(Usage, Usage.JAVA_RUNTIME))
+            it.attribute(Category.CATEGORY_ATTRIBUTE, project.objects.named(Category, Category.LIBRARY))
+            it.attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, project.objects.named(LibraryElements, LibraryElements.JAR))
+            it.attribute(Bundling.BUNDLING_ATTRIBUTE, project.objects.named(Bundling, Bundling.SHADOWED))
+        }
+
+        // delay evaluation until after the nebula plug-in has been applied by the config plug-in. If we don't
+        // do this the name of the artifact does not include the version.
+
+        afterEvaluate {
+            outgoing.artifact(tasks.named("signEmbedded"))
+        }
+
+    }
+
+}
+
+project.components.actionPackage {
+    addVariantsFromConfiguration(project.configurations.embeddedSignedRuntimeElements) {
+        it.mapToMavenScope("runtime")
+    }
+}
+
+publishing {
+    publications {
+        nexus(MavenPublication) {
+            from components.actionPackage
+        }
+    }
+}
