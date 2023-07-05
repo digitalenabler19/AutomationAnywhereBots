@@ -1,0 +1,182 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "blocks": {
+        "*": {
+          "blockType": "ocrResult.blocks[&1].blockType",
+          "id": "ocrResult.blocks[&1].id",
+          "text": "ocrResult.blocks[&1].text",
+          "relationships": "ocrResult.blocks[&1].relationships",
+          "confidence": "ocrResult.blocks[&1].confidence",
+          "geometry": {
+            "left": "ocrResult.blocks[&2].geometry.x1",
+            "top": "ocrResult.blocks[&2].geometry.y1",
+            "width": "ocrResult.blocks[&2].geometry.x2",
+            "height": "ocrResult.blocks[&2].geometry.y2"
+          }
+        }
+      },
+      "DocumentMetadata": {
+        "Pages": "metadata.noOfPages"
+      }
+    }
+  },
+  {
+    "operation": "modify-default-beta",
+    "spec": {
+      "metadata": {
+        "documentId": "5e9a17e6-bdfc-417f-a0af-230d824513c9",
+        "filepath": "C:\\ProgramData\\AutomationAnywhere\\debug\\58045aa8-1798-4988-95b0-6c8e111f1745\\0_processed.png",
+        "executionStatus": {
+          "statusCode": 200,
+          "statusMessage": "SUCCESS",
+          "message": "Document processed successfully"
+        },
+        "timeInMs": 7565.0,
+        "clusterId": "00000000-0000-0000-0000-000000000000",
+        "numberOfPages": 1
+      },
+      "imagePreprocessingResult": {
+        "metadata": {
+          "documentId": "5e9a17e6-bdfc-417f-a0af-230d824513c9",
+          "filepath": "C:\\ProgramData\\AutomationAnywhere\\debug\\58045aa8-1798-4988-95b0-6c8e111f1745\\0_processed.png",
+          "executionStatus": {
+            "statusCode": 200,
+            "statusMessage": "SUCCESS",
+            "message": "Document processed successfully"
+          },
+          "timeInMs": 7850.0
+        },
+        "pages": {
+          "filepath": "C:\\ProgramData\\AutomationAnywhere\\debug\\58045aa8-1798-4988-95b0-6c8e111f1745\\0_processed.png",
+          "deskew": true,
+          "orientation": true,
+          "renderDpi": 0,
+          "width": 1192,
+          "height": 701
+        }
+      },
+      "ocrResult": {
+        "metadata": {
+          "executionStatus": {
+            "statusCode": 200,
+            "statusMessage": "SUCCESS",
+            "message": "Document processed successfully"
+          },
+          "numberOfPages": 1,
+          "learningInstanceSetting": {
+            "provider": "abbyy",
+            "version": "12.4",
+            "langCodes": ["eng"]
+          },
+          "timeInMs": 299.0,
+          "pages": [{
+            "id": "CFC5A2AF-55E3-4375-B5BD-7328B2001CF8",
+            "pageNum": 1,
+            "filepath": "C:\\ProgramData\\AutomationAnywhere\\debug\\58045aa8-1798-4988-95b0-6c8e111f1745\\0_processed.png",
+            "langCode": "eng"
+          }]
+        }
+
+      },
+      "docDetectResult": {
+        "metadata": {
+          "executionStatus": {
+            "statusCode": 200,
+            "statusMessage": "SUCCESS",
+            "message": "Document processed successfully"
+          },
+          "timeInMs": 1675.0
+        },
+        "featureObjects": [{
+          "id": "F9318601-0B0B-4E8C-B0A3-BFE6F544BEE5",
+          "blockType": "INFO_BLOCK",
+          "geometry": {
+            "x1": 71,
+            "y1": 162,
+            "x2": 341,
+            "y2": 291
+          },
+          "text": "",
+          "relationships": [
+            "CF70FFE2-B816-453A-9646-AD0F232F081C"],
+          "featureRelationships": [],
+          "confidence": 0.91,
+          "ocrConfidence": 0.8167111111111112,
+          "pageNum": 1
+        }]
+      },
+      "extractionResult": {
+        "metadata": {
+          "filepath": "C:\\ProgramData\\AutomationAnywhere\\debug\\58045aa8-1798-4988-95b0-6c8e111f1745\\0_processed.png",
+          "executionStatus": {
+            "statusCode": 200,
+            "statusMessage": "SUCCESS",
+            "message": "Document processed successfully"
+          },
+          "timeInMs": 0.0,
+          "pages": []
+        },
+        "keyValueFeatures": {
+          "id": "04185CFA-930B-4E39-96B8-A913AA8F2619",
+          "domainFieldKey": "invoice_date",
+          "geometry": {
+            "x1": 648,
+            "y1": 456,
+            "x2": 991,
+            "y2": 483
+          },
+          "text": "",
+          "pageNum": 1,
+          "ocrConfidence": 0.888,
+          "extractionScore": 0.922,
+          "key": {
+            "id": "8689BE5B-B0EB-4051-BA11-E08051D6EA06",
+            "text": "Invoice Date",
+            "geometry": {
+              "x1": 652,
+              "y1": 459,
+              "x2": 794,
+              "y2": 477
+            },
+            "extractionScore": 0.999,
+            "relationships": ["181205DC-D4BB-4C85-B619-AF01D48AF49E", "8BC80B0E-8B8D-4D4F-8989-D6FB91CC4AD0"]
+          },
+          "value": {
+            "id": "829A0999-77AC-41BD-A4D2-60E1D49C9E0A",
+            "text": "",
+            "geometry": {
+              "x1": 838,
+              "y1": 459,
+              "x2": 988,
+              "y2": 480
+            },
+            "extractionScore": 0.999,
+            "relationships": ["7C33EF23-BBAF-44B1-A7D4-2B81B0454E23", "2BA7C7DF-E754-48DC-BC64-9607DC637F6C", "BAE30412-C5CC-44C8-B520-950EDCDCF3ED"]
+          },
+          "extractedDataType": "TEXT"
+        },
+        "tableFeatures": [],
+        "graphicFeatures": [],
+        "addressFeatures": {
+          "id": "F9318601-0B0B-4E8C-B0A3-BFE6F544BEE5",
+          "domainFieldKey": "ship_to_address",
+          "geometry": {
+            "x1": 71,
+            "y1": 162,
+            "x2": 341,
+            "y2": 291
+          },
+          "text": "",
+          "pageNum": 1,
+          "ocrConfidence": 0.817,
+          "extractionScore": 0.863,
+          "relationships": ["CF70FFE2-B816-453A-9646-AD0F232F081C", "7C2E74F0-1D69-4158-92B7-ED2A6172FF0E", "42A0EAF1-4842-4E44-A899-B1398CCE0627", "1D824FDC-AE69-4797-AC10-8A2F14D5E12B", "C3A09179-84C2-4F0C-B78D-86B0817B6000", "41F62D54-68CF-4D7B-9ACA-B90A9E4826CD", "725D8D3E-4E43-4EB2-9F6E-1EB0E4AA5476", "984A2CE4-E9AF-4645-97E4-2C2BB68434DC"],
+          "extractedDataType": "TEXT"
+        }
+      }
+    }
+  }
+
+]

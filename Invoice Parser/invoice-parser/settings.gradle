@@ -1,0 +1,26 @@
+rootProject.name = 'invoice-parser'
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://nexus.automationanywhere.net/repository/maven'
+        }
+        maven {
+            url 'https://nexus.automationanywhere.net/repository/plugins.gradle.org/'
+            content {
+                excludeGroupByRegex "com\\.automationanywhere\\..*"
+            }
+        }
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.automationanywhere.build:config-plugin:1.3.0'
+    }
+}
+
+apply plugin: 'com.automationanywhere.build.config-plugin'
+startParameter.excludedTaskNames = ["spotlessJavaCheck"]
+
+
+
+
