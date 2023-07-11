@@ -12,10 +12,12 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.*;
+import java.util.logging.*;
+
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 import static com.automationanywhere.commandsdk.model.DataType.STRING;
@@ -33,6 +35,7 @@ import static com.automationanywhere.commandsdk.model.DataType.STRING;
         )
 public class BulkInsertSQL {
 
+    private static final Logger logger = Logger.getLogger(BulkInsertSQL.class.getName());
     @Execute
     public StringValue action(
             @Idx(index = "1", type = AttributeType.FILE)
@@ -42,7 +45,8 @@ public class BulkInsertSQL {
             final String inputFilePath,
             @Idx(index = "2", type = AttributeType.TEXT)
             @LocalFile
-            @Pkg(label = "Enter the dbUrl")
+            @Pkg(label = "Enter the dbUrl (a database url of the form jdbc:subprotocol:subname)" +
+                    "eg :jdbc:server:hostname\\instancename;databaseName: ")
             @NotEmpty
             final String dbUrl,
             @Idx(index = "3", type = AttributeType.TEXT)
@@ -59,51 +63,60 @@ public class BulkInsertSQL {
             @LocalFile
             @Pkg(label = "Enter the query to insert")
             @NotEmpty
-            final String sql
+            final String sql,
+            @Idx(index = "6", type = AttributeType.TEXT)
+            @LocalFile
+            @Pkg(label = "Enter the filePath for logs")
+            @NotEmpty
+            final String logFilePath
     ) {
-
-
-        int batchSize=20000;
+        configureLogger(logFilePath);
         try {
             FileInputStream file = new FileInputStream(new File(inputFilePath));
             Workbook workbook = new XSSFWorkbook(file);
             Sheet sheet = workbook.getSheetAt(0);
-
+            int totalNumberOfRecords = 0;
             try (Connection connection = DriverManager.getConnection(dbUrl, username, password)) {
                 connection.setAutoCommit(false);
                 try (PreparedStatement statement = connection.prepareStatement(sql)) {
                     int numRows = sheet.getLastRowNum() + 1;
-                    for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
+                    for (int rowIndex = 1; rowIndex < numRows; rowIndex++) {
                         Row row = sheet.getRow(rowIndex);
                         int numCells = row.getLastCellNum();
-                        for (int cellIndex = 0; cellIndex < numCells; cellIndex++) {
-                            Cell cell = row.getCell(cellIndex);
-                            String cellValue = getCellValueAsString(cell);
-                            statement.setString(cellIndex + 1, cellValue);
+                        try {
+                            for (int cellIndex = 0; cellIndex < numCells; cellIndex++) {
+                                Cell cell = row.getCell(cellIndex);
+                                String cellValue = getCellValueAsString(cell);
+                                statement.setString(cellIndex + 1, cellValue);
+                            }
+                            statement.addBatch();
+                            totalNumberOfRecords++;
                         }
-                        statement.addBatch();
-
-                        if((rowIndex+1)%batchSize==0){
-                            statement.executeBatch();
+                        catch (SQLException e){
+                            logger.log(Level.SEVERE,"Error processing row: "+row.getRowNum(),e);
                         }
 
                     }
+//                    totalNumberOfRecords++;
                     statement.executeBatch();
                 }
+                logger.info("Total number of records inserted: "+totalNumberOfRecords);
                 connection.commit();
+                return new StringValue("Records inserted Successfully");
+            }catch (SQLException e) {
+                logger.log(Level.SEVERE,"Error connecting to database: " ,e);
             }
 
             workbook.close();
             file.close();
-            return new StringValue("Records inserted Successfully");
-        }catch (IOException | SQLException e) {
-            e.printStackTrace();
+        }catch (IOException e) {
+            logger.log(Level.SEVERE,"Error reading excel file: " ,e);
         }
         return new StringValue("Records were not inserted. Check the error");
     }
 
     private static String getCellValueAsString(Cell cell) {
-        if (cell == null) {
+        if (cell==null){
             return null;
         }
         switch (cell.getCellType()) {
@@ -119,5 +132,21 @@ public class BulkInsertSQL {
                 return null;
         }
     }
+
+    private static void configureLogger(String logFilePath){
+        try {
+            Path logDirectory = Paths.get(logFilePath).getParent();
+            Files.createDirectories(logDirectory);
+
+            LogManager.getLogManager().reset();
+            logger.setLevel(Level.ALL);
+            FileHandler fileHandler = new FileHandler(logFilePath);
+            fileHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fileHandler);
+        }catch(IOException e){
+            logger.log(Level.SEVERE,"Failed to configure logger",e);
+        }
+    }
+
 
 }
