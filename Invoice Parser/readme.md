@@ -14,7 +14,7 @@ We have used AWS-textractor as a third party parser for this demo
 #### Step 1:
 * Go to the console and create an IAM profile for yourself 
 * In the permission policies, grant access to AmazonS3FullAccess, AmazonTextractFullAccess
-amaz1.png
+<img width="960" alt="amaz1" src="https://github.com/hasnainsyed73/RPA/assets/129178965/351c45cf-a601-46c6-8a6d-6a0de977b730">
 
 #### Step 2:
 * Go to Security credentials
@@ -22,7 +22,8 @@ amaz1.png
 
 #### Step 3:
 * Download the project to local and and add the access key and secret key that you've generated in AWSConnect class.
-amaz2.png
+<img width="638" alt="amaz2" src="https://github.com/hasnainsyed73/RPA/assets/129178965/c2584e2b-63d2-4214-9d86-21ec60c36b14">
+
 
 #### Step 4:
 * After the code configuration is done and code setup is completed. Build the project, use command "gradlew.bat clean build shadowJar".
@@ -33,36 +34,37 @@ amaz2.png
 
 * Open Postman to post the following API's
 
-* <control-room-url>/cognitive/v3/parsers
+* Endpoint: control-room-url/cognitive/v3/parsers
 * Method: Post
 * Headers: X-Authorization
 * Use the below params in the body
-amaz3.png
+<img width="617" alt="amaz3" src="https://github.com/hasnainsyed73/RPA/assets/129178965/e74d5a59-7703-4d63-8557-727945302e74">
+
 
 #### Step 6:
 
-* To get the parser-id
+#### To get the parser-id
 
-* <control-room-url>/cognitive/v3/parsers
+* Endpoint: control-room-url/cognitive/v3/parsers
 * Method: Get
 * Headers: X-Authorization
 * Copy the parser id from the response json for your parser.
 
 #### Step 7:
 
-* To get domainLanguageId,domainId,domainName,domainLanguageProviderId,domainLanguageProviderParserId
+#### To get domainLanguageId, domainId,domainName, domainLanguageProviderId, domainLanguageProviderParserId
 
 * Paste the parser id in this endpoint
-* <control-room-url>/cognitive/v3/parsers/<parser-id>
+* Endpoint: control-room-url/cognitive/v3/parsers/<parser-id>
 * Method: Get
 * Headers: X-Authorization
 * Copy the domainLanguageId,domainId,domainName,domainLanguageProviderId,domainLanguageProviderParserId from the response json for your parser.
 
 #### Step 8:
 
-* To post this on the learning instance page.
+#### To post this on the learning instance page.
 
-* <control-room-url>/cognitive/v3/learninginstances
+* Endpoint: control-room-url/cognitive/v3/learninginstances
 * Method: Post
 * Headers: X-Authorization
 * Replace domainLanguageId,domainId,domainName,domainLanguageProviderId,domainLanguageProviderParserId in the body with your copied values.
