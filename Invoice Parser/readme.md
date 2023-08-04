@@ -111,7 +111,7 @@ We have used AWS-textractor as a third party parser for this demo
     ]
 }
 
-#### Step 7:
+#### Step 9:
 * Open the learning instance page when you try to create new learning instance and click on document type you'll be able to see the new document that you've posted.
 * And when you click on the parser, you'll be able to find your new parser.
 
