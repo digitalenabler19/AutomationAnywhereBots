@@ -1,0 +1,10 @@
+{
+  "name" : "ExtractionPlugin",
+  "label" : "Extraction Plugin",
+  "description" : "This is a plugin package for Document Automation",
+  "group" : "",
+  "artifactName" : "",
+  "packageVersion" : "",
+  "codeVersion" : "",
+  "commands" : [ ]
+}

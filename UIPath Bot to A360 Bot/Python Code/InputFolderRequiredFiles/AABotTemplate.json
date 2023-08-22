@@ -1,0 +1,32 @@
+{
+  "triggers": [],
+  "nodes": [],
+  "variables": [
+    {
+      "type": "NUMBER",
+      "subtype": "UNDEFINED",
+      "readOnly": false,
+      "input": false,
+      "output": false,
+      "name": "SampleNumber"
+    },
+    {
+      "type": "STRING",
+      "subtype": "UNDEFINED",
+      "readOnly": false,
+      "input": false,
+      "output": false,
+      "name": "SampleString"
+    }
+  ],
+  "breakpoints": [],
+  "packages": [],
+  "migrationJournalReviewIds": [],
+  "workItemTemplateName": null,
+  "properties": {
+    "botCodeVersion": "4",
+    "improvedNumberSupport": true,
+    "timeout": "0s",
+    "automationPriority": "PRIORITY_MEDIUM"
+  }
+}
